@@ -33,6 +33,7 @@ import { loadDeployPreview } from 'Actions/deploys';
 import { deserializeValues } from 'Lib/serializeEntryValues';
 import { selectEntry, selectUnpublishedEntry, selectDeployPreview, getAsset } from 'Reducers';
 import { selectFields } from 'Reducers/collections';
+import { selectLocale } from 'Reducers/config';
 import { status, EDITORIAL_WORKFLOW } from 'Constants/publishModes';
 import EditorInterface from './EditorInterface';
 import withWorkflow from './withWorkflow';
@@ -87,6 +88,7 @@ export class Editor extends React.Component {
     loadLocalBackup: PropTypes.func,
     persistLocalBackup: PropTypes.func.isRequired,
     deleteLocalBackup: PropTypes.func,
+    locale: PropTypes.string.isRequired,
   };
 
   componentDidMount() {
@@ -401,6 +403,7 @@ export class Editor extends React.Component {
       loadDeployPreview,
       slug,
       t,
+      locale,
     } = this.props;
 
     const isPublished = !newEntry && !unpublishedEntry;
@@ -449,6 +452,7 @@ export class Editor extends React.Component {
         onLogoutClick={logoutUser}
         deployPreview={deployPreview}
         loadDeployPreview={opts => loadDeployPreview(collection, slug, entry, isPublished, opts)}
+        locale={locale}
       />
     );
   }
@@ -474,6 +478,7 @@ function mapStateToProps(state, ownProps) {
   const currentStatus = unpublishedEntry && unpublishedEntry.getIn(['metaData', 'status']);
   const deployPreview = selectDeployPreview(state, collectionName, slug);
   const localBackup = entryDraft.get('localBackup');
+  const locale = selectLocale(state.config);
   return {
     collection,
     collections,
@@ -493,6 +498,7 @@ function mapStateToProps(state, ownProps) {
     currentStatus,
     deployPreview,
     localBackup,
+    locale,
   };
 }
 

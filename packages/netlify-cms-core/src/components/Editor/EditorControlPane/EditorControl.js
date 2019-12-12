@@ -187,6 +187,7 @@ class EditorControl extends React.Component {
       clearFieldErrors,
       loadEntry,
       t,
+      locale,
     } = this.props;
     const widgetName = field.get('widget');
     const widget = resolveWidget(widgetName);
@@ -290,6 +291,7 @@ class EditorControl extends React.Component {
               fieldsErrors={fieldsErrors}
               onValidateObject={onValidateObject}
               t={t}
+              locale={locale}
             />
             {fieldHint && (
               <ControlHint active={this.state.styleActive} error={!!errors}>

@@ -56,6 +56,7 @@ export default class Widget extends Component {
     loadEntry: PropTypes.func.isRequired,
     t: PropTypes.func.isRequired,
     onValidateObject: PropTypes.func,
+    locale: PropTypes.string.isRequired,
   };
 
   shouldComponentUpdate(nextProps) {
@@ -248,6 +249,7 @@ export default class Widget extends Component {
       fieldsErrors,
       controlRef,
       t,
+      locale,
     } = this.props;
     return React.createElement(controlComponent, {
       field,
@@ -285,6 +287,7 @@ export default class Widget extends Component {
       fieldsErrors,
       controlRef,
       t,
+      locale,
     });
   }
 }

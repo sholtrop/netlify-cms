@@ -175,6 +175,7 @@ class EditorInterface extends Component {
       onLogoutClick,
       loadDeployPreview,
       deployPreview,
+      locale,
     } = this.props;
 
     const { previewVisible, scrollSyncEnabled, showEventBlocker } = this.state;
@@ -192,6 +193,7 @@ class EditorInterface extends Component {
           onChange={onChange}
           onValidate={onValidate}
           ref={c => (this.controlPaneRef = c)}
+          locale={locale}
         />
       </ControlPaneContainer>
     );
@@ -215,6 +217,7 @@ class EditorInterface extends Component {
                 fields={fields}
                 fieldsMetaData={fieldsMetaData}
                 getAsset={getAsset}
+                locale={locale}
               />
             </PreviewPaneContainer>
           </StyledSplitPane>
@@ -312,6 +315,7 @@ EditorInterface.propTypes = {
   onLogoutClick: PropTypes.func.isRequired,
   deployPreview: ImmutablePropTypes.map,
   loadDeployPreview: PropTypes.func.isRequired,
+  locale: PropTypes.string.isRequired,
 };
 
 export default EditorInterface;

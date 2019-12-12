@@ -29,6 +29,7 @@ export default class DateControl extends React.Component {
     setInactiveStyle: PropTypes.func.isRequired,
     value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     includeTime: PropTypes.bool,
+    locale: PropTypes.string,
   };
 
   getFormats() {
@@ -114,7 +115,7 @@ export default class DateControl extends React.Component {
   };
 
   render() {
-    const { forID, value, classNameWrapper, setActiveStyle } = this.props;
+    const { forID, value, classNameWrapper, setActiveStyle, locale } = this.props;
     const { format, dateFormat, timeFormat } = this.formats;
     return (
       <div
@@ -130,6 +131,7 @@ export default class DateControl extends React.Component {
           onFocus={setActiveStyle}
           onBlur={this.onBlur}
           inputProps={{ className: classNameWrapper, id: forID }}
+          locale={locale}
         />
       </div>
     );

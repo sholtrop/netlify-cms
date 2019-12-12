@@ -21,4 +21,6 @@ const config = (state = Map({ isFetching: true }), action) => {
   }
 };
 
+export const selectLocale = state => state.get('locale', 'en');
+
 export default config;
