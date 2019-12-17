@@ -525,7 +525,7 @@
   },
   {
     "method": "GET",
-    "url": "/repos/forkOwner/repo/branches/master?ts=300",
+    "url": "/repos/owner/repo/branches/master?ts=300",
     "headers": {
       "Date": "Wed, 20 Nov 2019 15:07:41 GMT",
       "Content-Type": "application/json; charset=utf-8",
